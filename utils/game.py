@@ -22,45 +22,22 @@ class Hangman:
     -If wrong, letter goes to wrongly_guessed_letters
     """
     
-    Input=''
-    ask=True
-    while ask:
-      Input=input("Enter a single letter:")
-
-
-
-
-      #Enter ONE letter
-      print(len(Input))
-      
-      if len(Input)==1:
-        ask=False
-        print(Input.lower())
-       
-      
-      
-        
-      else:
-        print('Enter a single letter to continue')
-        
-
-
-    #  correct word goes into    
-    for i in self.word_to_find:
+    Input=input("Enter a single letter:")
     
-      if Input==i:
-        self.correctly_guess_letter.append(i)
-        print(self.correctly_guess_letter)
-        self.turn_count +=1
+    if Input in self.word_to_find:
+       for i in range(len(self.word_to_find)):
+            if self.word_to_find[i]==Input:
+               self.correctly_guess_letter[i]=Input 
+               self.turn_count +=1 
+    
         
 
-      else:
+    if Input not in self.word_to_find:
         self.wrongly_guess_letter.append(i)
         print(self.wrongly_guess_letter)
         self.error_count +=1
         self.lives-=1
-      if Input==self.word_to_find:
-        self.well_play()
+     
 
 
   def start_game(self):
